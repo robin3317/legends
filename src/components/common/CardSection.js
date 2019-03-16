@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
   cardSection: {
     backgroundColor: '#fff',
     borderColor: '#ddd',
-    borderBottomWidth: 1,
+    borderBottomWidth: 2,
     flexDirection: 'row',
     justifyContent: 'flex-start',
     padding: 5,
