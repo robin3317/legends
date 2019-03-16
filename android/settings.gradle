@@ -1,0 +1,3 @@
+rootProject.name = 'legends'
+
+include ':app'
