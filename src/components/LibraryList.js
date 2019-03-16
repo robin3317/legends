@@ -9,14 +9,10 @@ import ListItem from './ListItem';
 class LibraryList extends Component {
 
   render() {
-    let superHeroes = [];
-    this.props.libraries.map(individual => {
-      superHeroes.push({key: individual.title})
-    });
     return(
       <FlatList
-        data={superHeroes}
-        renderItem={({item}) => <ListItem title={item.key} />}
+        data={this.props.libraries}
+        renderItem={({item}) => <ListItem title={item.key} id={item.id} description={item.description} />}
       />
     );
   }

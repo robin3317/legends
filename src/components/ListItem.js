@@ -7,17 +7,24 @@ import * as actions from '../actions';
 
 class ListItem extends Component {
 
+  renderDescription = () => {
+    if(this.props.id === this.props.selectedLibraryId) {
+      return(
+        <Text>{this.props.description}</Text>
+      );
+    }
+  }
+
   render() {
     const { titleStyle } = styles;
 
-    console.log(this.props);
-
     return(
-      <TouchableWithoutFeedback>
+      <TouchableWithoutFeedback onPress={() => this.props.selectLibrary(this.props.id)}>
         <View>
           <CardSection>
             <Text style={titleStyle}>{this.props.title}</Text>
           </CardSection>
+          {this.renderDescription()}
         </View>
       </TouchableWithoutFeedback>
     );
@@ -32,4 +39,8 @@ const styles = StyleSheet.create({
   }
 });
 
-export default connect(null, actions)(ListItem);
+const mapStateToProps = state => {
+  return { selectedLibraryId: state.selectedLibraryId };
+}
+
+export default connect(mapStateToProps, actions)(ListItem);
