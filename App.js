@@ -1,11 +1,15 @@
-import React, {Component} from 'react';
-import {Text} from 'react-native';
+import React, { Component } from 'react';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 
-import {Header} from './src/common';
+import { Header } from './src/common';
+import reducers from './src/reducers';
 class App extends Component {
   render() {
     return (
-      <Header header="Legends" />
+      <Provider store={createStore(reducers)}>
+        <Header header="Legends" />
+      </Provider>
     );
   }
 }
