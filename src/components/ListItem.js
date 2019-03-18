@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Text, StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
 import { connect } from 'react-redux';
+import * as Animatable from 'react-native-animatable';
 
 import { CardSection } from './common';
 import * as actions from '../actions';
@@ -10,7 +11,9 @@ class ListItem extends Component {
   renderDescription = () => {
     if(this.props.id === this.props.selectedLibraryId) {
       return(
-        <Text>{this.props.description}</Text>
+        <CardSection>
+          <Animatable.Text animation='lightSpeedIn'>{this.props.description}</Animatable.Text>
+        </CardSection>
       );
     }
   }
