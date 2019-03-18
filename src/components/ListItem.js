@@ -1,18 +1,30 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
+import { Text, StyleSheet, TouchableWithoutFeedback, View, Image } from 'react-native';
 import { connect } from 'react-redux';
 import * as Animatable from 'react-native-animatable';
 
-import { CardSection } from './common';
+import { Card, CardSection } from './common';
 import * as actions from '../actions';
 
 class ListItem extends Component {
 
   renderDescription = () => {
+    const { imageStyle, descriptionStyle } = styles;
+
     if(this.props.id === this.props.selectedLibraryId) {
+      let legendPic = `./${this.props.title.toLowerCase()}.png`;
+      console.log(legendPic);
       return(
         <CardSection>
-          <Animatable.Text animation='lightSpeedIn'>{this.props.description}</Animatable.Text>
+          <View style={imageStyle}>
+            <Image 
+              style={{height: 50, width: 50}} 
+              source={require(`./${legendPic}`)} 
+            />
+          </View>
+          <Animatable.Text animation='lightSpeedIn' style={descriptionStyle}>
+            {this.props.description}
+          </Animatable.Text>
         </CardSection>
       );
     }
@@ -23,12 +35,12 @@ class ListItem extends Component {
 
     return(
       <TouchableWithoutFeedback onPress={() => this.props.selectLibrary(this.props.id)}>
-        <View>
-          <CardSection>
-            <Text style={titleStyle}>{this.props.title}</Text>
-          </CardSection>
-          {this.renderDescription()}
-        </View>
+          <View>
+            <CardSection>
+              <Text style={titleStyle}>{this.props.title}</Text>
+            </CardSection>
+            {this.renderDescription()}
+          </View>
       </TouchableWithoutFeedback>
     );
   }
@@ -39,6 +51,13 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '700',
     paddingLeft: 8
+  },
+  imageStyle: {
+    padding: 10
+  },
+  descriptionStyle: {
+    flex: 1,
+    fontSize: 16
   }
 });
 
