@@ -8,18 +8,29 @@ import * as actions from '../actions';
 
 class ListItem extends Component {
 
+  //TODO: Need to store value as key pairs
+  // pic = {
+  //   blackWidow: "black widow.png",
+  //   captainAmerica: "captain america.png",
+  //   hulk: "hulk.png",
+  //   ironMan: "iron man.png",
+  //   thanos: "thanos.png",
+  //   thor: "./thor.png",
+  //   vision: "vision.png"
+  // }
+
   renderDescription = () => {
     const { imageStyle, descriptionStyle } = styles;
 
     if(this.props.id === this.props.selectedLibraryId) {
-      let legendPic = `./${this.props.title.toLowerCase()}.png`;
-      console.log(legendPic);
+      // let legendPic = this.props.title.toLowerCase();
+      // console.log(legendPic);
       return(
         <CardSection>
           <View style={imageStyle}>
             <Image 
               style={{height: 50, width: 50}} 
-              source={require(`./${legendPic}`)} 
+              source={require("./thor.png")} 
             />
           </View>
           <Animatable.Text animation='lightSpeedIn' style={descriptionStyle}>
